@@ -187,11 +187,8 @@ fn get_word_by_date() -> (usize, &'static str) {
 }
 
 fn get_random_word() -> (usize, &'static str) {
-  let word_index = words::word_set.len();
-  (
-    word_index,
-    words::word_set[thread_rng().gen_range(0..word_index)],
-  )
+  let word_index = thread_rng().gen_range(0..words::word_set.len());
+  (word_index, words::word_set[word_index])
 }
 
 fn main() {
@@ -204,5 +201,3 @@ fn main() {
 
   input_loop(word_index, word);
 }
-
-// if  a win, print out the share emojis
